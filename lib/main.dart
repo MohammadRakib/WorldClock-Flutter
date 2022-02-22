@@ -4,10 +4,10 @@ import 'package:world_clock_flutter/screen/chose_location.dart';
 import 'package:world_clock_flutter/screen/loading.dart';
 void main() {
   runApp(MaterialApp(
-    // initialRoute: '/choseLocation',
+    // initialRoute: '/loading',
     routes: {
-      '/': (context) => Home(),
-      '/loading': (context) => Loading(),
+      '/home': (context) => Home(),
+      '/': (context) => Loading(),
       '/choseLocation': (context) => ChoseLocation(),
     },
   ));
