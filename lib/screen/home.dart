@@ -8,34 +8,72 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   Map data = {};
+  String bgImage = '';
+  Color? bgColor;
 
   @override
   Widget build(BuildContext context) {
-
     data = ModalRoute.of(context)?.settings.arguments as Map;
+    bgImage = data['isDay'] ? 'day.jpg':'night.jpg';
+    bgColor = data['isDay'] ? Colors.indigo:Colors.blue[900];
 
     return Scaffold(
+      backgroundColor: bgColor,
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                  onPressed: (){
-                    Navigator.pushNamed(context, '/choseLocation');
-                  },
-                  child: const Text('Location')
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/$bgImage'),
+              fit: BoxFit.cover,
+            )
+          ),
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(0.0, 100.0, 0.0, 0.0),
+              child: Column(
+                children: [
+                  TextButton.icon(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/choseLocation');
+                    },
+                    style: TextButton.styleFrom(
+                      primary: Colors.red[900],
+                    ),
+                    icon: const Icon(Icons.location_on,size: 35.0,),
+                    label: const Text('Edit Location',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  Text(
+                    data['location'],
+                    style: TextStyle(
+                      fontSize: 35.0,
+                      letterSpacing: 2.0,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  Text(
+                    data['time'],
+                    style: TextStyle(
+                      fontSize: 60.0,
+                      letterSpacing: 2.0,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 20.0,),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(data['time']),
-            ),
-          ],
+          ),
         ),
       ),
     );

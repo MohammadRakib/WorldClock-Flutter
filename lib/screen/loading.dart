@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:world_clock_flutter/services/get_location_time.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Loading extends StatefulWidget {
   const Loading({Key? key}) : super(key: key);
@@ -16,7 +17,8 @@ class _LoadingState extends State<Loading> {
       Navigator.pushReplacementNamed(context, '/home',arguments: {
         'time': temp,
         'location': locationTime.location,
-        'imageUri': locationTime.imageUri
+        'imageUri': locationTime.imageUri,
+        'isDay': locationTime.isDay,
       });
   }
 
@@ -29,7 +31,13 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(child: Text('Loading')),
+      body: Center(
+          // child: CircularProgressIndicator(),
+        child: SpinKitThreeInOut(
+          color: Colors.brown,
+          size: 50.0,
+        ),
+      ),
     );
   }
 }
