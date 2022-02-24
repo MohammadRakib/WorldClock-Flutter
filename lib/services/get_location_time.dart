@@ -13,7 +13,7 @@ class LocationTime{
 
   Future<String> getTime() async{
     try{
-      Response response = await get(Uri.parse('http://worldtimeapi.org/api/timezone/Asia/$uri'));
+      Response response = await get(Uri.parse('http://worldtimeapi.org/api/timezone/$uri'));
       Map data = jsonDecode(response.body);
       String dt = data['datetime'];
       DateTime dateTime = DateTime.parse(dt.substring(0,26));

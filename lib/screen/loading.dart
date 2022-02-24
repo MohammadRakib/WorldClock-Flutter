@@ -12,7 +12,7 @@ class Loading extends StatefulWidget {
 class _LoadingState extends State<Loading> {
 
   void getdata() async{
-      LocationTime locationTime = LocationTime(location: 'Dhaka', imageUri: 'dhaka', uri: 'Dhaka');
+      LocationTime locationTime = LocationTime(location: 'Dhaka', imageUri: 'bangladesh.png', uri: 'Asia/Dhaka');
       String temp = await locationTime.getTime();
       Navigator.pushReplacementNamed(context, '/home',arguments: {
         'time': temp,
