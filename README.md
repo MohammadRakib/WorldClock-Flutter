@@ -7,6 +7,6 @@ This is a personal flutter project for learning purpose.
 * [World Time API](http://worldtimeapi.org)
 * Flutter
 * Dart
-* Flutter Spinkit
+* [Flutter Spinkit](https://pub.dev/packages/flutter_spinkit)
 
 ## Features
